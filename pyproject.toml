@@ -1,0 +1,7 @@
+[project]
+name = "nja-wagtail"
+version = "0.1.0"
+description = "Basic CMS for NSW Jockeys Association"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = ["ruff>=0.8.4", "wagtail>=6.3.1"]
