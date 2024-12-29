@@ -5,3 +5,56 @@ description = "Basic CMS for NSW Jockeys Association"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = ["ruff>=0.8.4", "wagtail>=6.3.1"]
+
+[tool.ruff.lint]
+exclude = [".venv", ".vscode", ".github"]
+select = [
+    # pycodestyle
+    "E",
+    # pycodestyle warnings
+    "W",
+    # Pyflakes
+    "F",
+
+    ## Flake8 plugins
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-comprehensions
+    "C",
+    # flake8-django
+    "DJ",
+    # flake8-bandit
+    "S",
+    # flake8-simplify
+    "SIM",
+
+    # isort
+    "I",
+    # McCabe complexity
+    "C901",
+    # python refactoring
+    "PLR",
+    # tryexcept/exception handling
+    "TRY",
+    "BLE",
+    "RSE",
+    # Return statements
+    "RET",
+    # Built-in shadowing
+    "A",
+    # Executable shebang file
+    "EXE",
+    # Implicit namespace package
+    "INP",
+    # Type checking imports
+    "TCH",
+    # Be specifical about type ignores
+    "PGH",
+    # Ruff specific rules
+    "RUF",
+]
+
+[tool.ruff.lint.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 5.
+max-complexity = 5
