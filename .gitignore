@@ -14,3 +14,5 @@ staticfiles/
 
 db.sqlite3
 .env
+node_modules/
+output.css
