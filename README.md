@@ -2,4 +2,4 @@
 
 cheatsheet:
 - `uv pip install -r pyproject.toml`
-- `uv run manage.py runserver`c
+- `uv run manage.py runserver`
