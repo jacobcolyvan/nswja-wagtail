@@ -27,7 +27,7 @@ load_dotenv(BASE_DIR / ".env")
 # Application definition
 
 INSTALLED_APPS = [
-    "djangosite.home",
+    "djangosite.pages",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
