@@ -15,11 +15,13 @@ class BasePage(Page):
         default=False,
         help_text="Include contact details at the bottom of the page.",
     )
+    main_content = RichTextField(blank=True)
 
-    base_panels: ClassVar[list] = [
+    content_panels: ClassVar[list] = [
         *Page.content_panels,
         FieldPanel("subtitle"),
         FieldPanel("include_contact_details"),
+        FieldPanel("main_content"),
     ]
 
     class Meta:
@@ -31,7 +33,6 @@ class HomePage(BasePage, HeroMixin):
     parent_page_types: ClassVar[list] = ["wagtailcore.Page"]
     max_count = 1
 
-    main_content = RichTextField(blank=True)
     cta_cards = StreamField(
         [("cta_card", CTACardBlock())],
         use_json_field=True,
@@ -39,11 +40,15 @@ class HomePage(BasePage, HeroMixin):
     )
 
     content_panels: ClassVar[list] = [
-        *BasePage.base_panels,
-        *HeroMixin.hero_panels,
-        FieldPanel("main_content"),
+        *BasePage.content_panels,
+        *HeroMixin.content_panels,
         FieldPanel("cta_cards"),
     ]
+
+
+class GeneralPage(BasePage):
+    template = "pages/general_page.html"
+    parent_page_types: ClassVar[list] = ["pages.HomePage"]
 
 
 class AboutPage(BasePage):
@@ -51,7 +56,6 @@ class AboutPage(BasePage):
     parent_page_types: ClassVar[list] = ["pages.HomePage"]
     max_count = 1
 
-    main_content = RichTextField(blank=True)
     core_team = StreamField(
         [("core_team_member", CoreTeamBlock())],
         use_json_field=True,
@@ -64,8 +68,7 @@ class AboutPage(BasePage):
     )
 
     content_panels: ClassVar[list] = [
-        *BasePage.base_panels,
-        FieldPanel("main_content"),
+        *BasePage.content_panels,
         FieldPanel("core_team"),
         FieldPanel("board_members"),
     ]

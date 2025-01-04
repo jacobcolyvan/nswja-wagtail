@@ -1,4 +1,5 @@
 from wagtail.blocks import CharBlock, PageChooserBlock, StructBlock
+from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.blocks import ImageChooserBlock
 
 
@@ -30,3 +31,13 @@ class BoardMemberBlock(StructBlock):
     class Meta:
         template = "blocks/board_member_block.html"
         label = "Board Member"
+
+
+class FormBlock(StructBlock):
+    title = CharBlock(required=True)
+    description = CharBlock(required=False)
+    document = DocumentChooserBlock(required=True)
+
+    class Meta:
+        template = "blocks/form_block.html"
+        label = "Form"

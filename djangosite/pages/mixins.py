@@ -19,7 +19,7 @@ class HeroMixin(models.Model):
     )
     hero_image_alt_text = models.CharField(max_length=255, blank=False)
 
-    hero_panels: ClassVar[list[MultiFieldPanel]] = [
+    content_panels: ClassVar[list[MultiFieldPanel]] = [
         MultiFieldPanel(
             [
                 FieldPanel("hero_title"),
