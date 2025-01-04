@@ -1,0 +1,49 @@
+{% load wagtailcore_tags %}
+
+<header class="sticky top-0 bg-base-100/80 border-b border-base-content/30 backdrop-blur-sm transition-all duration-200 z-10">
+    <nav class="navbar mx-auto px-4">
+        <!-- Brand/Logo -->
+        <div class="flex-1 h-16 md:h-20">
+            <a href="{% url 'wagtail_serve' '' %}" class="btn btn-ghost normal-case h-full py-1 px-0 md:px-2">
+                {% comment %}
+                <!-- TODO: Set up wagtail settings to manage logo -->
+                <!-- For now, using static tag would be needed -->
+                {% endcomment %}
+                <img src="/static/assets/nja-logo.png" alt="NJA Logo" class="h-[90%] object-contain">
+            </a>
+        </div>
+
+        <!-- Desktop menu (center) -->
+        <div class="hidden lg:flex flex-none gap-2">
+            {% for page in navigation_pages %}
+                <a href="{% pageurl page %}"
+                   class="btn btn-ghost hover:bg-primary/20 hover:text-primary rounded-lg font-medium transition-all duration-200
+                          {% if request.path == page.url %}bg-primary/10 text-primary-content{% endif %}">
+                    {{ page.title }}
+                </a>
+            {% endfor %}
+        </div>
+
+        <!-- Mobile menu (right) -->
+        <div class="flex-none lg:hidden">
+            <details id="mobile-menu" class="dropdown dropdown-end">
+                <summary tabindex="0" class="btn m-1 hover:btn-primary-focus relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </summary>
+                <ul class="menu menu-sm dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52 border border-primary/10">
+                    {% for page in navigation_pages %}
+                        <li>
+                            <a href="{% pageurl page %}"
+                               class="font-medium p-3 hover:bg-primary/20 rounded-lg transition-all duration-200
+                               {% if request.path == page.url %}bg-primary/10 text-primary-content{% endif %}">
+                                {{ page.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </details>
+        </div>
+    </nav>
+</header>

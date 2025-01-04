@@ -1,0 +1,27 @@
+{% load wagtailcore_tags %}
+
+<footer class="bg-base-200 py-10">
+    <div class="content-w container">
+        {# Navigation Links Section #}
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-2">
+                {% for page in navigation_pages %}
+                    <a
+                        href="{% pageurl page %}"
+                        class="block hover:text-primary transition-all duration-200 {% if request.path == page.url %}text-primary{% endif %}"
+                    >
+                        {{ page.title }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="flex flex-col space-y-4">
+            {% include "includes/ellipses.html" %}
+
+            <div class="text-sm space-y-2">
+                <p>&copy; {% now "Y" %} NSW Jockeys Association. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>

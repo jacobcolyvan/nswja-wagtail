@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "scripts": {
         "preinstall": "npx only-allow pnpm",
-        "build:css": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/output.css",
-        "watch:css": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/output.css --watch"
+        "css:build": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/output.css",
+        "css:watch": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/output.css --watch"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.15",
