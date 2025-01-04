@@ -1,0 +1,10 @@
+{% if accordion_items %}
+<div class="accordions-section mb-16">
+    <div class="join join-vertical w-full">
+        {% for block in accordion_items %}
+            {# Passing forloop_counter to set the first item as checked/opened #}
+            {% include_block block with forloop_counter=forloop.counter %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

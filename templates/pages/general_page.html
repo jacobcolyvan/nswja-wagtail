@@ -8,5 +8,6 @@
                 {{ page.main_content|richtext }}
             </div>
         {% endif %}
+        {% include "includes/accordion.html" with accordion_items=page.accordions %}
     </div>
 {% endblock %}

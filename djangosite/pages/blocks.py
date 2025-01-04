@@ -1,4 +1,4 @@
-from wagtail.blocks import CharBlock, PageChooserBlock, StructBlock
+from wagtail.blocks import CharBlock, PageChooserBlock, RichTextBlock, StructBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -40,4 +40,13 @@ class FormBlock(StructBlock):
 
     class Meta:
         template = "blocks/form_block.html"
-        label = "Form"
+        label = "Form Download"
+
+
+class AccordionItemBlock(StructBlock):
+    title = CharBlock(required=True)
+    content = RichTextBlock()
+
+    class Meta:
+        template = "blocks/accordion_item_block.html"
+        label = "Accordion/Collapsible Item"
