@@ -44,7 +44,14 @@
         </a>
 
         {% include "includes/header.html" %}
-        {% block page_title %}{% endblock %}
+
+        {# Title and subtitle #}
+        <div class="bg-base-200 py-12">
+            <div class="content-w">
+                <h1 class="typography-h1 text-primary">{{ page.title }}</h1>
+                {% if page.subtitle %}<p class="mt-2 text-base-content/70 text-lg">{{ page.subtitle }}</p>{% endif %}
+            </div>
+        </div>
 
         <div class="flex-grow mb-16">
             <div class="content-w w-full container">

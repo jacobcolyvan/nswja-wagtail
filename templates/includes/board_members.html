@@ -1,0 +1,24 @@
+{% load wagtailcore_tags %}
+
+{% if board_members %}
+    <div class="mb-12">
+        <h2 class="typography-h2 text-primary mb-8">NSWJA Board of Directors 2024</h2>
+
+        {% regroup board_members by position as grouped_members %}
+
+        <div>
+            {% for position in grouped_members %}
+                <div class="px-1 py-3 flex items-start gap-8 border-b border-base-content/30">
+                    <div class="font-semibold w-48 shrink-0">{{ position.grouper }}</div>
+                    <div class="flex-grow">
+                        {% for member in position.list %}
+                            <div class="text-right mb-1 last:mb-0">
+                                <span>{{ member.name }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

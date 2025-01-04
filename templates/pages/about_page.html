@@ -3,8 +3,6 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
-    {% include "includes/hero_section.html" %}
-
     <div class="container mx-auto px-4 py-8">
         {% if page.main_content %}
             <div class="prose max-w-none mb-24">
@@ -12,6 +10,7 @@
             </div>
         {% endif %}
 
-        {% include "includes/cta_cards.html" %}
+        {% include "blocks/core_team.html" %}
+        {% include "blocks/board_members.html" %}
     </div>
 {% endblock %}

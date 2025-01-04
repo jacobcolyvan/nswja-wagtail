@@ -207,3 +207,5 @@ WAGTAILDOCS_EXTENSIONS = [
     "xlsx",
     "zip",
 ]
+
+WAGTAILADMIN_COMMENTS_ENABLED = False

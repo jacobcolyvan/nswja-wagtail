@@ -1,0 +1,9 @@
+{% if page.core_team %}
+    <div class="mb-16">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {% for team_member in page.core_team %}
+                {{ team_member }}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

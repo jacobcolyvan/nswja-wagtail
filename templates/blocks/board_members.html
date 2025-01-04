@@ -1,0 +1,10 @@
+{% if page.board_members %}
+    <div class="mb-12">
+        <h2 class="typography-h2 text-primary mb-8">NSWJA Board of Directors 2024</h2>
+        <div>
+            {% for board_member in page.board_members %}
+                {{ board_member }}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

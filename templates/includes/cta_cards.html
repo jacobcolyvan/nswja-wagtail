@@ -1,0 +1,7 @@
+{% if page.cta_cards %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+        {% for block in page.cta_cards %}
+            {% include_block block %}
+        {% endfor %}
+    </div>
+{% endif %}
