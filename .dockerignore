@@ -1,6 +1,5 @@
 # Django project
 /media/
-/static/
 *.sqlite3
 
 # Python and others
@@ -37,3 +36,10 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+.git/
+fly.toml
+.env
+.env.production
+.venv
+.delete/

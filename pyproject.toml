@@ -6,11 +6,15 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
   "boto3>=1.35.90",
+  "dj-database-url>=2.3.0",
   "django-extensions>=3.2.3",
   "django-storages>=1.14.4",
+  "gunicorn>=23.0.0",
+  "psycopg>=3.2.3",
   "python-dotenv>=1.0.1",
   "ruff>=0.8.4",
   "wagtail>=6.3.1",
+  "whitenoise>=6.8.2",
 ]
 
 [tool.ruff.lint]
@@ -65,3 +69,4 @@ select = [
 [tool.ruff.lint.mccabe]
 # Flag errors (`C901`) whenever the complexity level exceeds 5.
 max-complexity = 5
+
