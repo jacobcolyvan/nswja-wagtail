@@ -2,6 +2,9 @@
 
 {% load wagtailcore_tags %}
 
+{# Remove title and subtitle from header #}
+{% block title_and_subtitle %}{% endblock %}
+
 {% block content %}
     {% include "includes/hero_section.html" %}
 

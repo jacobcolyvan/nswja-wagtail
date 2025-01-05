@@ -17,33 +17,47 @@
         <div class="hidden lg:flex flex-none gap-2">
             {% for page in navigation_pages %}
                 <a href="{% pageurl page %}"
-                   class="btn btn-ghost hover:bg-primary/20 hover:text-primary rounded-lg font-medium transition-all duration-200
-                          {% if request.path == page.url %}bg-primary/10 text-primary-content{% endif %}">
+                   class="px-3 py-2 hover:text-primary font-medium transition-all duration-200
+                          {% if request.path == page.url %}text-primary border-b-2 border-primary{% endif %}">
                     {{ page.title }}
                 </a>
             {% endfor %}
         </div>
 
-        <!-- Mobile menu (right) -->
+        <!-- Mobile menu button (right) -->
         <div class="flex-none lg:hidden">
-            <details id="mobile-menu" class="dropdown dropdown-end">
-                <summary tabindex="0" class="btn m-1 hover:btn-primary-focus relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-                    </svg>
-                </summary>
-                <ul class="menu menu-sm dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52 border border-primary/10">
-                    {% for page in navigation_pages %}
-                        <li>
-                            <a href="{% pageurl page %}"
-                               class="font-medium p-3 hover:bg-primary/20 rounded-lg transition-all duration-200
-                               {% if request.path == page.url %}bg-primary/10 text-primary-content{% endif %}">
-                                {{ page.title }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </details>
+            <label for="drawer-toggle" class="btn m-1 hover:btn-primary-focus">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </label>
         </div>
     </nav>
 </header>
+
+<!-- Drawer overlay -->
+<input type="checkbox" id="drawer-toggle" class="hidden peer">
+<label for="drawer-toggle" class="fixed inset-0 bg-black/50 opacity-0 invisible peer-checked:visible peer-checked:opacity-100 transition-all duration-300 z-20 lg:hidden"></label>
+
+<!-- Drawer content -->
+<div class="fixed top-0 right-0 h-full w-80 bg-base-100 shadow-xl translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out z-30 lg:hidden">
+    <!-- Close button -->
+    <label for="drawer-toggle" class="btn btn-ghost absolute right-2 top-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </label>
+
+    <!-- Drawer menu items -->
+    <div class="p-4 mt-16">
+        {% for page in navigation_pages %}
+            <div class="block w-full px-3 py-2">
+                <a href="{% pageurl page %}"
+                   class="inline-block hover:text-primary font-medium transition-all duration-200
+                         {% if request.path == page.url %}text-primary border-b-2 border-primary{% endif %}">
+                    {{ page.title }}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

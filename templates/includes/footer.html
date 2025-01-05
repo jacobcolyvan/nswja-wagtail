@@ -6,12 +6,15 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div class="space-y-2">
                 {% for page in navigation_pages %}
-                    <a
-                        href="{% pageurl page %}"
-                        class="block hover:text-primary transition-all duration-200 {% if request.path == page.url %}text-primary{% endif %}"
-                    >
-                        {{ page.title }}
-                    </a>
+                    <div>
+                        <a
+                            href="{% pageurl page %}"
+                            class="inline-block hover:text-primary transition-all duration-200
+                                  {% if request.path == page.url %}border-b-2 border-primary{% endif %}"
+                        >
+                            {{ page.title }}
+                        </a>
+                    </div>
                 {% endfor %}
             </div>
         </div>
