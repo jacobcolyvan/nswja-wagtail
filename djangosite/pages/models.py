@@ -1,7 +1,8 @@
 from typing import ClassVar
 
-from django.db.models import BooleanField, CharField
-from wagtail.admin.panels import FieldPanel
+from django.db.models import BooleanField, CharField, IntegerField
+from django.utils.translation import gettext_lazy
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 
@@ -16,7 +17,8 @@ from djangosite.pages.mixins import HeroMixin
 
 
 class BasePage(Page):
-    show_in_menus_default = True
+    default_show_in_menus = True
+    menu_sort_order = IntegerField(default=0)
 
     subtitle = CharField(max_length=255, blank=True)
     include_contact_details = BooleanField(
@@ -30,6 +32,23 @@ class BasePage(Page):
         FieldPanel("subtitle"),
         FieldPanel("include_contact_details"),
         FieldPanel("main_content"),
+    ]
+    promote_panels: ClassVar[list] = [
+        MultiFieldPanel(
+            [
+                FieldPanel("slug"),
+                FieldPanel("seo_title"),
+                FieldPanel("search_description"),
+            ],
+            gettext_lazy("For search engines"),
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("show_in_menus"),
+                FieldPanel("menu_sort_order"),
+            ],
+            gettext_lazy("For site menus"),
+        ),
     ]
 
     class Meta:
@@ -59,6 +78,7 @@ class HomePage(BasePage, HeroMixin):
 class GeneralPage(BasePage):
     template = "pages/general_page.html"
     parent_page_types: ClassVar[list] = ["pages.HomePage"]
+    subpage_types: ClassVar[list] = ["pages.GeneralPage"]
 
     accordions = StreamField(
         [("accordion_item", AccordionItemBlock())],
@@ -79,6 +99,7 @@ class GeneralPage(BasePage):
 class AboutPage(BasePage):
     template = "pages/about_page.html"
     parent_page_types: ClassVar[list] = ["pages.HomePage"]
+    subpage_types: ClassVar[list] = []
     max_count = 1
 
     core_team = StreamField(
@@ -102,6 +123,7 @@ class AboutPage(BasePage):
 class FormsPage(BasePage):
     template = "pages/forms_page.html"
     parent_page_types: ClassVar[list] = ["pages.HomePage"]
+    subpage_types: ClassVar[list] = []
     max_count = 1
 
     forms = StreamField(

@@ -14,7 +14,7 @@ def navigation(request):
             .live()
             .in_menu()
             .specific()
-            .order_by("path")
+            .order_by("menu_sort_order", "path")
         )
         # Combine HomePage with its children
         navigation_pages = [home_page, *list(child_pages)]

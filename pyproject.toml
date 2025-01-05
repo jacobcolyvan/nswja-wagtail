@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [tool.ruff.lint]
-exclude = [".venv", ".vscode", ".github"]
+exclude = [".venv", ".vscode", ".github", "**/migrations"]
 select = [
   # pycodestyle
   "E",
@@ -69,4 +69,3 @@ select = [
 [tool.ruff.lint.mccabe]
 # Flag errors (`C901`) whenever the complexity level exceeds 5.
 max-complexity = 5
-
