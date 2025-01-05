@@ -33,9 +33,6 @@ EXPOSE 8000
 
 COPY . /code/
 
-# Collect static files.
-RUN python manage.py collectstatic --noinput --clear
-
 # Install pnpm
 RUN npm install -g pnpm
 
@@ -47,5 +44,8 @@ RUN pnpm install
 
 # Build Tailwind CSS using pnpm
 RUN pnpm run css:build
+
+# Collect static files.
+RUN python manage.py collectstatic --noinput --clear
 
 CMD ["gunicorn","--bind",":8000","--workers","1","djangosite.wsgi"]
