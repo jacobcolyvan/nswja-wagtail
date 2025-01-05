@@ -16,6 +16,8 @@ from djangosite.pages.mixins import HeroMixin
 
 
 class BasePage(Page):
+    show_in_menus_default = True
+
     subtitle = CharField(max_length=255, blank=True)
     include_contact_details = BooleanField(
         default=False,
