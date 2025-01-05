@@ -33,6 +33,7 @@ class BasePage(Page):
         FieldPanel("include_contact_details"),
         FieldPanel("main_content"),
     ]
+    # Same as Page.promote_panels, but with menu_sort_order added
     promote_panels: ClassVar[list] = [
         MultiFieldPanel(
             [
@@ -72,6 +73,17 @@ class HomePage(BasePage, HeroMixin):
         FieldPanel("include_contact_details"),
         FieldPanel("main_content"),
         FieldPanel("cta_cards"),
+    ]
+    # Same as BasePage.promote_panels, but without menu options
+    promote_panels: ClassVar[list] = [
+        MultiFieldPanel(
+            [
+                FieldPanel("slug"),
+                FieldPanel("seo_title"),
+                FieldPanel("search_description"),
+            ],
+            gettext_lazy("For search engines"),
+        )
     ]
 
 
