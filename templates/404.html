@@ -1,11 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Page not found{% endblock %}
 
 {% block body_class %}template-404{% endblock %}
 
-{% block content %}
-<h1>Page not found</h1>
+{% block title_and_subtitle %}
+<div class="bg-base-200 py-12">
+    <div class="content-w">
+        <h1 class="typography-h1 text-primary">Page not found</h1>
+        <p class="mt-2 text-base-content/70 text-lg">Sorry, this page could not be found.</p>
+    </div>
+</div>
+{% endblock %}
 
-<h2>Sorry, this page could not be found.</h2>
+{% block content %}
+<p class="text-base-content">
+    Please check the URL or navigate back to our <a href="/" class="link link-primary">homepage</a>.
+</p>
 {% endblock %}
