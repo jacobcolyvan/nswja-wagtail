@@ -14,8 +14,9 @@ def navigation(request):
             .live()
             .in_menu()
             .specific()
-            .order_by("menu_sort_order", "path")
         )
+        # Sort after .specific() has converted to the specific page types
+        child_pages = sorted(child_pages, key=lambda x: (x.menu_sort_order, x.path))
         # Combine HomePage with its children
         navigation_pages = [home_page, *list(child_pages)]
     else:
