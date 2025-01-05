@@ -1,0 +1,7 @@
+{% load wagtailcore_tags %}
+
+{% if page.main_content %}
+    <div class="prose max-w-none mb-16">
+        {{ page.main_content|richtext }}
+    </div>
+{% endif %}

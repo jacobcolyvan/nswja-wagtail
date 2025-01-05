@@ -47,7 +47,7 @@
 
         {% block title_and_subtitle %}
         {# Title and subtitle #}
-        <div class="bg-base-200 py-12">
+        <div class="bg-base-200 py-12 mb-8">
             <div class="content-w">
                 <h1 class="typography-h1 text-primary">{{ page.title }}</h1>
                 {% if page.subtitle %}<p class="mt-2 text-base-content/70 text-lg">{{ page.subtitle }}</p>{% endif %}
@@ -59,6 +59,7 @@
         <div class="flex-grow mb-16">
             <div class="content-w w-full container">
                 <main id="skip" class="py-8 max-w-none">
+                  div
                     {% block content %}{% endblock %}
                     {% include "includes/contact.html" %}
                 </main>

@@ -8,13 +8,8 @@
 {% block content %}
     {% include "includes/hero_section.html" %}
 
-    <div class="container mx-auto px-4 py-8">
-        {% if page.main_content %}
-            <div class="prose max-w-none mb-24">
-                {{ page.main_content|richtext }}
-            </div>
-        {% endif %}
-
+    <div class="container mx-auto px-4">
+        {% include "includes/rich_text.html" %}
         {% include "includes/cta_cards.html" %}
     </div>
 {% endblock %}

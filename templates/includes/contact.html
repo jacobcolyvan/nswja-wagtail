@@ -2,11 +2,11 @@
 {% get_settings %}
 
 {% if page.include_contact_details %}
-<div class="mt-12">
+<div>
   <h2 class="typography-h2 text-primary mb-4">Contact Details</h2>
 
   <div class="p-6 rounded-xl border bg-white shadow-sm transition-all duration-200 hover:shadow-md">
-    <h4 class="typography-h4">{{ settings.site_settings.ContactSettings.position }}</h4>
+    <p class="typography-h4">{{ settings.site_settings.ContactSettings.position }}</p>
     <p class="mt-1 text-xl font-bold text-neutral">{{ settings.site_settings.ContactSettings.name }}</p>
 
     <div class="mt-4 space-y-3">
