@@ -46,8 +46,10 @@ class HomePage(BasePage, HeroMixin):
     )
 
     content_panels: ClassVar[list] = [
-        *BasePage.content_panels,
+        *Page.content_panels,
         *HeroMixin.content_panels,
+        FieldPanel("include_contact_details"),
+        FieldPanel("main_content"),
         FieldPanel("cta_cards"),
     ]
 

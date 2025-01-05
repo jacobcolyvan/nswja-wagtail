@@ -27,7 +27,7 @@ class HeroMixin(models.Model):
                 FieldPanel("hero_image"),
                 FieldPanel("hero_image_alt_text"),
             ],
-            heading="Hero Section",
+            heading="Hero Image Section",
         )
     ]
 
