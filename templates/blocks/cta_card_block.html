@@ -1,6 +1,6 @@
 {% load wagtailimages_tags %}
 
-<div class="relative h-48 rounded-2xl overflow-hidden bg-gray-200">
+<div class="relative h-48 rounded-md overflow-hidden bg-gray-200">
     {% if value.background_image %}
         {% image value.background_image fill-800x400 as bg_image %}
         <img
