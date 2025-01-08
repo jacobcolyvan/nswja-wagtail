@@ -3,6 +3,8 @@
 cheatsheet:
 - `uv pip install -r pyproject.toml`
 - `uv run manage.py runserver`
+- `uv lock --upgrade`
+- `uv sync`
 - `fly deploy --ha=false`
 - `flyctl secrets import < .env.production`
 - `flyctl ssh console`

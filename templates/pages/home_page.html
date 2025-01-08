@@ -5,9 +5,11 @@
 {# Remove title and subtitle from header #}
 {% block title_and_subtitle %}{% endblock %}
 
-{% block content %}
+{% block hero %}
     {% include "includes/hero_section.html" %}
+{% endblock %}
 
+{% block content %}
     <div class="container mx-auto px-4">
         {% include "includes/rich_text.html" %}
         {% include "includes/cta_cards.html" %}
