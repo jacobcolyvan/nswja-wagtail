@@ -7,7 +7,6 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 
 from djangosite.pages.blocks import (
-    AccordionItemBlock,
     BoardMemberBlock,
     CoreTeamBlock,
     CTACardBlock,
@@ -99,19 +98,19 @@ class GeneralPage(BasePage):
         help_text="These are good for adding links to other pages on the site.",
     )
 
-    accordions = StreamField(
-        [("accordion_item", AccordionItemBlock())],
-        help_text=(
-            "These are good for adding collapsible content to the page, like "
-            "FAQs or other content that can be grouped together."
-        ),
-        use_json_field=True,
-        blank=True,
-    )
+    # accordions = StreamField(
+    #     [("accordion_item", AccordionItemBlock())],
+    #     help_text=(
+    #         "These are good for adding collapsible content to the page, like "
+    #         "FAQs or other content that can be grouped together."
+    #     ),
+    #     use_json_field=True,
+    #     blank=True,
+    # )
 
     content_panels: ClassVar[list] = [
         *BasePage.content_panels,
-        FieldPanel("accordions"),
+        FieldPanel("cta_cards"),
     ]
 
 
