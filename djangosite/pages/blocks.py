@@ -1,4 +1,10 @@
-from wagtail.blocks import CharBlock, PageChooserBlock, RichTextBlock, StructBlock
+from wagtail.blocks import (
+    CharBlock,
+    EmailBlock,
+    PageChooserBlock,
+    RichTextBlock,
+    StructBlock,
+)
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -15,9 +21,10 @@ class CTACardBlock(StructBlock):
 
 
 class CoreTeamBlock(StructBlock):
+    image = ImageChooserBlock(required=False)
     name = CharBlock(required=True)
     role = CharBlock(required=True)
-    image = ImageChooserBlock(required=False)
+    email = EmailBlock(required=False)
 
     class Meta:
         template = "blocks/core_team_block.html"
