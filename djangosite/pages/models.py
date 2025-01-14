@@ -92,6 +92,13 @@ class GeneralPage(BasePage):
     parent_page_types: ClassVar[list] = ["pages.HomePage"]
     subpage_types: ClassVar[list] = ["pages.GeneralPage"]
 
+    cta_cards = StreamField(
+        [("cta_card", CTACardBlock())],
+        use_json_field=True,
+        blank=True,
+        help_text="These are good for adding links to other pages on the site.",
+    )
+
     accordions = StreamField(
         [("accordion_item", AccordionItemBlock())],
         help_text=(

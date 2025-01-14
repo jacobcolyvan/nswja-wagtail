@@ -1,8 +1,8 @@
 {% load wagtailcore_tags %}
 
-{% if page.cta_cards %}
+{% if cta_cards %}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-        {% for block in page.cta_cards %}
+        {% for block in cta_cards %}
             {% include_block block %}
         {% endfor %}
     </div>
