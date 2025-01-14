@@ -88,7 +88,7 @@ class HomePage(BasePage, HeroMixin):
 
 class GeneralPage(BasePage):
     template = "pages/general_page.html"
-    parent_page_types: ClassVar[list] = ["pages.HomePage"]
+    parent_page_types: ClassVar[list] = ["pages.HomePage", "pages.GeneralPage"]
     subpage_types: ClassVar[list] = ["pages.GeneralPage"]
 
     cta_cards = StreamField(

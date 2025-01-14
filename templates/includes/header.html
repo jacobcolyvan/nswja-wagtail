@@ -1,5 +1,9 @@
 {% load wagtailcore_tags %}
 
+{% load navigation_tags %}
+
+{% get_navigation_pages as navigation_pages %}
+
 <header class="sticky top-0 bg-base-100/80 border-b border-base-content/30 backdrop-blur-sm transition-all duration-200 z-10">
     <nav class="navbar mx-auto px-4">
         <!-- Brand/Logo -->
@@ -11,12 +15,36 @@
 
         <!-- Desktop menu (center) -->
         <div class="hidden lg:flex flex-none gap-2">
-            {% for page in navigation_pages %}
-                <a href="{% pageurl page %}"
-                   class="px-3 py-2 hover:text-primary font-medium transition-all duration-200
-                          {% if request.path == page.url %}text-primary border-b-2 border-primary{% endif %}">
-                    {{ page.title }}
-                </a>
+            {% for item in navigation_pages %}
+                {% if item.children %}
+                    <div class="relative group">
+                        <a href="{% pageurl item.page %}" class="px-3 py-2 hover:text-primary font-medium transition-all duration-200 flex items-center
+                                                                {% if request.path == item.page.url %}text-primary border-b-2 border-primary{% endif %} hover:underline">
+                            <span class="font-semibold">{{ item.page.title }}</span>
+                            <!-- Add an icon to indicate dropdown -->
+                            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+                        <ul class="absolute left-0 mt-0 bg-base-100 shadow-lg border border-gray-300 hidden group-hover:block w-44">
+                            {% for child in item.children %}
+                                <li>
+                                    <a href="{% pageurl child.page %}"
+                                       class="block px-3 py-2 hover:text-primary transition-all duration-200 hover:underline
+                                             {% if request.path == child.page.url %}text-primary{% endif %}">
+                                        {{ child.page.title }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <a href="{% pageurl item.page %}"
+                       class="px-3 py-2 hover:text-primary font-medium transition-all duration-200
+                              {% if request.path == item.page.url %}text-primary border-b-2 border-primary{% endif %} hover:underline">
+                        <span class="font-semibold">{{ item.page.title }}</span>
+                    </a>
+                {% endif %}
             {% endfor %}
         </div>
 
@@ -46,13 +74,24 @@
 
     <!-- Drawer menu items -->
     <div class="p-4 mt-16">
-        {% for page in navigation_pages %}
+        {% for item in navigation_pages %}
             <div class="block w-full px-3 py-2">
-                <a href="{% pageurl page %}"
+                <a href="{% pageurl item.page %}"
                    class="inline-block hover:text-primary font-medium transition-all duration-200
-                         {% if request.path == page.url %}text-primary border-b-2 border-primary{% endif %}">
-                    {{ page.title }}
+                         {% if request.path == item.page.url %}text-primary border-b-2 border-primary{% endif %}">
+                    {{ item.page.title }}
                 </a>
+                {% if item.children %}
+                    <div class="ml-4 mt-2 space-y-2">
+                        {% for child in item.children %}
+                            <a href="{% pageurl child.page %}"
+                               class="block hover:text-primary transition-all duration-200
+                                     {% if request.path == child.page.url %}text-primary{% endif %}">
+                                {{ child.page.title }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         {% endfor %}
     </div>

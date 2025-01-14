@@ -1,20 +1,34 @@
 {% load wagtailcore_tags %}
 
+{% load navigation_tags %}
+
+{% get_navigation_pages as navigation_pages %}
+
 <footer class="bg-base-200 py-10">
     <div class="content-w container">
-        {# Navigation Links Section #}
+        <!-- Navigation Links Section -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div class="space-y-2">
-                {% for page in navigation_pages %}
+                {% for item in navigation_pages %}
                     <div>
                         <a
-                            href="{% pageurl page %}"
+                            href="{% pageurl item.page %}"
                             class="inline-block hover:text-primary transition-all duration-200
-                                  {% if request.path == page.url %}border-b-2 border-primary text-primary{% endif %}"
+                                  {% if request.path == item.page.url %}border-b-2 border-primary text-primary{% endif %}"
                         >
-                            {{ page.title }}
+                            {{ item.page.title }}
                         </a>
                     </div>
+                    <!-- Display child pages as normal links -->
+                    {% for child in item.children %}
+                        <div>
+                            <a href="{% pageurl child.page %}"
+                               class="inline-block hover:text-primary transition-all duration-200
+                                     {% if request.path == child.page.url %}text-primary border-b-2 border-primary{% endif %}">
+                                {{ child.page.title }}
+                            </a>
+                        </div>
+                    {% endfor %}
                 {% endfor %}
             </div>
         </div>
