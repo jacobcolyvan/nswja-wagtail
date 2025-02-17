@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [tool.ruff.lint]
-exclude = [".venv", ".vscode", ".github", "**/migrations"]
+exclude = [".venv", ".vscode", ".github", "**/migrations/*"]
 select = [
   # pycodestyle
   "E",
@@ -65,6 +65,10 @@ select = [
   "PGH",
   # Ruff specific rules
   "RUF",
+]
+ignore = [
+  # star imports
+  # "F405",
 ]
 
 [tool.ruff.lint.mccabe]
