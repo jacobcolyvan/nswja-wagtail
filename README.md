@@ -8,5 +8,7 @@ cheatsheet:
 - `fly deploy --ha=false`
 - `flyctl secrets import < .env.production`
 - `flyctl ssh console`
+- `ruff check .`
+- `ruff format .`
 
 https://www.accordbox.com/blog/create-stylish-wagtail-pages-with-tailwind-css/
