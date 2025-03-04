@@ -1,0 +1,27 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    reviewers:
+      - "jacobcolyvan"
+    schedule:
+      interval: "monthly"
+    ignore:
+      # We need to be careful with django and wagtail updates
+      - dependency-name: "django"
+        update-types:
+          ["version-update:semver-minor", "version-update:semver-major"]
+      - dependency-name: "wagtail"
+        update-types:
+          ["version-update:semver-minor", "version-update:semver-major"]
+
+    groups:
+      patch-version-updates-pip:
+        update-types:
+          - "patch"
+      minor-version-updates-pip:
+        update-types:
+          - "minor"
+      major-version-updates-pip:
+        update-types:
+          - "major"
