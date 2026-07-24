@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.messages",
+    "django.contrib.postgres",
     "django.contrib.sessions",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
@@ -181,6 +182,7 @@ STORAGES = {
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "NSW Jockeys Association"
+WAGTAILIMAGES_MAX_IMAGE_PIXELS = 25_000_000
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html

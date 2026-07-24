@@ -1,6 +1,7 @@
 {
     "name": "nswja-11ty",
     "version": "1.0.0",
+    "packageManager": "pnpm@11.17.0",
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "css:build": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/output.css",

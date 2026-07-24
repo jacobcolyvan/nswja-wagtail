@@ -6,6 +6,9 @@
 app = 'nswja-wagtail'
 primary_region = 'syd'
 console_command = '/code/manage.py shell'
+kill_signal = 'SIGTERM'
+kill_timeout = 30
+swap_size_mb = 512
 
 [build]
 
@@ -18,13 +21,18 @@ console_command = '/code/manage.py shell'
 [http_service]
   internal_port = 8000
   force_https = true
-  auto_stop_machines = 'suspend'
+  auto_stop_machines = 'stop'
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 1
   processes = ['app']
 
+  [http_service.concurrency]
+    type = 'requests'
+    soft_limit = 8
+    hard_limit = 20
+
 [[vm]]
-  memory = '4gb'
+  memory = '1536mb'
   cpu_kind = 'shared'
   cpus = 2
 
